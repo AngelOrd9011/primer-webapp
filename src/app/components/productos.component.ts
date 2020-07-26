@@ -10,7 +10,7 @@ import { Producto } from "../models/producto";
 })
 export class ProductosListComponent{
     public titulo:string;
-    public productos:Producto[];
+    public productos: Producto[];
     constructor(
         private _route:ActivatedRoute,
         private _router:Router,
@@ -21,12 +21,11 @@ export class ProductosListComponent{
     ngOnInit(){
         this._productoService.getProductos().subscribe(
             result => {
-                console.log(result);
+                this.productos=result.data;
             },
             error => {
                 console.log(<any>error);
             }
         )
-        console.log(this._productoService.getProductos());
     }
 }

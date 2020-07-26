@@ -8,8 +8,6 @@ import { GLOBAL } from "./services/global";
 })
 export class AppComponent {
   public title = 'Productos';
-  public header_color: string;
   constructor(){
-    this.header_color=GLOBAL.header_color;
   }
 }

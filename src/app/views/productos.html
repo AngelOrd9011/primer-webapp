@@ -1,1 +1,31 @@
 <h2>{{titulo}}</h2>
+<hr>
+<div *ngIf="!productos">
+    Cargando productos...
+</div>
+<div *ngIf="productos">
+    <div class="col-lg-11 product_section">
+        <div class="row">
+            <div class="card col-lg-4 product_card" *ngFor="let producto of productos">
+                <div *ngIf="producto.imagen">
+                    <img class="card-img-top img_product" src="http://localhost:8082/primer-webapp-backend/uploads/{{producto.imagen}}" alt="Card image cap">
+                </div>
+                <div *ngIf="!producto.imagen">
+                    <div class="img_not"></div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{producto.nombre}}</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">$ {{producto.precio}}</li>
+                    </ul>
+                    <p class="card-text">{{producto.descripcion}}</p>
+                </div>
+                <div class="card-body product_btn">
+                    <a href="#" class="btn btn-success">Ver</a>
+                    <a href="#" class="btn btn-success">Editar</a>
+                    <a href="#" class="btn btn-danger">Eliminar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,8 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from "./components/home.component";
 import { ErrorComponent } from "./components/error.component";
 import { ProductosListComponent } from "./components/productos.component";
+import { AddComponent } from "./components/add.component";
 
 const routes: Routes = [
+  {path:'producto-add',component:AddComponent},
   {path:'productos',component: ProductosListComponent},
   {path:'',component: HomeComponent},
   {path:'home',component: HomeComponent},
