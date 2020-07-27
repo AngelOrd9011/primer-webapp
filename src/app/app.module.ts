@@ -8,6 +8,7 @@ import { HomeComponent } from "./components/home.component";
 import { ErrorComponent } from "./components/error.component";
 import { ProductosListComponent } from "./components/productos.component";
 import { AddComponent } from "./components/add.component";
+import { detailComponent } from "./components/producto-detail.component";
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     ErrorComponent,
     ProductosListComponent,
-    AddComponent
+    AddComponent,
+    detailComponent
   ],
   imports: [
     BrowserModule,

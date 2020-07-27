@@ -10,7 +10,7 @@ import { Producto } from "../models/producto";
     providers:[ProductoService]
 })
 export class detailComponent{
-    public producto:ProductoService;
+    public producto:Producto;
     constructor(
         private _productoServide:ProductoService,
         private _route: ActivatedRoute,
@@ -20,5 +20,23 @@ export class detailComponent{
     }
     ngOnInit(){
         console.log('Detalles del producto');
+        this.getProducto();
+    }
+    getProducto(){
+        this._route.params.forEach((params: Params) =>{
+            let id=params['id'];
+            this._productoServide.getProducto(id).subscribe(
+                result=>{
+                    if(result){
+                        this.producto=result.data;
+                    }else{
+                        this._router.navigate(['/productos']);
+                    }
+                },
+                error=>{
+                    console.log(<any>error)
+                }
+            );
+        });
     }
 }

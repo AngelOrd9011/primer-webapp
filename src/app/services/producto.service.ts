@@ -13,10 +13,16 @@ export class ProductoService{
     }
   
     getProductos() {
-      var product;
+      let product;
       product = this._http.get(this.url+'productos');
       JSON.parse(JSON.stringify(product));
       return product; 
+    }
+    getProducto(id){
+      let product;
+      product=this._http.get(this.url+'productos/'+id);
+      JSON.parse(JSON.stringify(product));
+      return product;
     }
     addProducto(producto: Producto){
       let json = JSON.stringify(producto);
