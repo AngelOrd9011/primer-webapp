@@ -4,21 +4,25 @@
     Cargando productos...
 </div>
 <div *ngIf="productos">
-    <div class="col-lg-11 product_section">
-        <div class="row">
-            <div class="card col-sm-4 product_card" *ngFor="let producto of productos">
-                <div *ngIf="producto.imagen">
-                    <img class="card-img-top img_product" src="http://localhost:8082/primer-webapp-backend/uploads/{{producto.imagen}}" alt="Card image cap">
-                </div>
-                <div *ngIf="!producto.imagen">
-                    <div class="img_not"></div>
-                </div>
-                <div class="card-body product_btn">
-                    <h5 class="card-title"><strong>{{producto.nombre}}</strong></h5>
-                    <p class="card-text">$ {{producto.precio}}</p>
-                    <a [routerLink]="['/producto-detail',producto.id]" class="btn btn-success">Ver</a>
-                    <a href="#" class="btn btn-success">Editar</a>
-                    <a href="#" class="btn btn-danger">Eliminar</a>
+    <div class="row product_section">
+        <div class="card col-md-4" *ngFor="let producto of productos">
+            <div *ngIf="producto.imagen">
+                <img class="card-img-top img_product" src="http://localhost:8082/primer-webapp-backend/uploads/{{producto.imagen}}" alt="Card image cap">
+            </div>
+            <div *ngIf="!producto.imagen">
+                <div class="img_not"></div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><strong>{{producto.nombre}}</strong></h5>
+                <p class="card-text">$ {{producto.precio}}</p>
+                <div *ngIf="confirm != producto.id" class="product_btn">
+                    <a [routerLink]="['/producto-detail',producto.id]" class="btn btn-primary">Ver</a>
+                    <a [routerLink]="['/producto-edit',producto.id]" class="btn btn-primary">Editar</a>
+                    <a (click)="confirmDelete(producto.id)" class="text-white btn btn-danger">Eliminar</a>
+                    </div>
+                <div *ngIf="confirm == producto.id" class="product_btn">
+                    <a (click)="deleteProducto(producto.id)" class="text-white btn btn-danger">Confirmar</a>
+                    <a (click)="cancelDelete()" class="text-white btn btn-primary">Cancelar</a>
                 </div>
             </div>
         </div>

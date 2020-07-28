@@ -1,6 +1,9 @@
 <div *ngIf="producto" class="row">
-    <div class="col-lg-3">
-        <img class="card-img-top img_product" src="http://localhost:8082/primer-webapp-backend/uploads/{{producto.imagen}}" alt="Card image cap">
+    <div *ngIf="producto.imagen" class="col-lg-3">
+        <img class="img_product" src="http://localhost:8082/primer-webapp-backend/uploads/{{producto.imagen}}">
+    </div>
+    <div *ngIf="!producto.imagen" class="col-lg-3">
+        <div class="img_not"></div>
     </div>
     <div class="col-lg-9">
         <h4>Detalles del producto: <strong>{{producto.nombre}}</strong></h4>

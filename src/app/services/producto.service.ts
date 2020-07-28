@@ -50,4 +50,13 @@ export class ProductoService{
         xhr.send(formData);
       });
     }
+    editProducto(id,producto:Producto){
+      let json = JSON.stringify(producto);
+      let params = 'json='+json;
+      let headers = new HttpHeaders({'Content-Type':'application/x-www-form-urlencoded'});
+      return this._http.post(this.url+'update-producto/'+id,params,{headers: headers});
+    }
+    deleteProducto(id){
+      return this._http.get(this.url+'delete-producto/'+id);
+    }
 }

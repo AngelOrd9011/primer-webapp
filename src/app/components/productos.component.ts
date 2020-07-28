@@ -10,12 +10,17 @@ import { Producto } from "../models/producto";
 export class ProductosListComponent{
     public titulo:string;
     public productos: Producto[];
+    public confirm;
     constructor(
         private _productoService: ProductoService
     ){
         this.titulo='Lista de productos';
+        this.confirm=null;
     }
     ngOnInit(){
+        this.getProductos();
+    }
+    getProductos(){
         this._productoService.getProductos().subscribe(
             result => {
                 this.productos=result.data;
@@ -24,5 +29,23 @@ export class ProductosListComponent{
                 console.log(<any>error);
             }
         )
+    }
+    confirmDelete(id){
+        this.confirm=id;
+    }
+    cancelDelete(){
+        this.confirm=null;
+    }
+    deleteProducto(id){
+        this._productoService.deleteProducto(id).subscribe(
+            result =>{
+                if (result) {
+                    this.getProductos();
+                }
+            },
+            error =>{
+                alert('Error en el servidor');
+            }
+        );
     }
 }

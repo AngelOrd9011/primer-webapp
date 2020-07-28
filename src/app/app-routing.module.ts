@@ -5,9 +5,11 @@ import { HomeComponent } from "./components/home.component";
 import { ErrorComponent } from "./components/error.component";
 import { ProductosListComponent } from "./components/productos.component";
 import { AddComponent } from "./components/add.component";
-import { detailComponent } from "./components/producto-detail.component";
+import { detailComponent } from "./components/detail.component";
+import { editComponent } from "./components/edit.component";
 
 const routes: Routes = [
+  {path:'producto-edit/:id',component:editComponent},
   {path:'producto-detail/:id',component:detailComponent},
   {path:'producto-add',component:AddComponent},
   {path:'productos',component: ProductosListComponent},
